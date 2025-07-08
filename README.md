@@ -120,4 +120,4 @@ This platform was created as part of the Software Intern application process for
 ---
 
 **Live Demo**: [Your Netlify Link Here]
-**GitHub Repository**: [Your GitHub Link Here]
+**GitHub Repository**: [https://github.com/yashsinghal14/vc-discovery-platform]
