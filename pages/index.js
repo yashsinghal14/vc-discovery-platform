@@ -1,6 +1,9 @@
 import Head from "next/head";
 import { useState, useEffect, useRef } from 'react';
-import { Search, Mail, ExternalLink, Building2, DollarSign, MapPin, Filter, Star, Users, Calendar, Globe, Briefcase, TrendingUp, Award, Sparkles, Zap, Target, Heart, ArrowRight, Clock, CheckCircle } from 'lucide-react';
+import { Search, Mail, ExternalLink, Building2, DollarSign, MapPin, Filter, Star, Users, Calendar, Globe, Briefcase, TrendingUp, Award, Sparkles, Zap, Target, Heart, ArrowRight, Clock, CheckCircle, X } from 'lucide-react';
+import Navbar from '../components/Navbar';
+import HeroSection from '../components/HeroSection';
+import Footer from '../components/Footer';
 import FloatingActionButton from '../components/FloatingActionButton';
 import Toast from '../components/Toast';
 
@@ -113,14 +116,48 @@ const vcDatabase = [
 
 const industries = [
   'All Industries',
-  'Fintech',
-  'Automotive',
-  'Fashion',
-  'Healthcare',
-  'Clean Energy',
   'Artificial Intelligence',
+  'Automotive',
+  'Biotech',
+  'Blockchain',
+  'Clean Energy',
+  'Consumer Goods',
   'Cryptocurrency',
-  'Education Technology'
+  'Cybersecurity',
+  'Data Analytics',
+  'Digital Health',
+  'E-commerce',
+  'Education Technology',
+  'Enterprise Software',
+  'Fashion',
+  'Financial Services',
+  'Fintech',
+  'Food & Beverage',
+  'Gaming',
+  'Healthcare',
+  'Industrial Tech',
+  'InsurTech',
+  'IoT',
+  'Legal Tech',
+  'Logistics',
+  'Machine Learning',
+  'Marketing Tech',
+  'Media & Entertainment',
+  'Mobility',
+  'PropTech',
+  'Real Estate',
+  'Retail Tech',
+  'Robotics',
+  'SaaS',
+  'Social Media',
+  'Space Tech',
+  'Sports Tech',
+  'Supply Chain',
+  'Sustainability',
+  'Telecommunications',
+  'Travel & Hospitality',
+  'Virtual Reality',
+  'Web3'
 ];
 
 export default function Home() {
@@ -133,6 +170,7 @@ export default function Home() {
   const [toast, setToast] = useState(null);
   const [favorites, setFavorites] = useState([]);
   const mainRef = useRef(null);
+  const [emailModal, setEmailModal] = useState(null);
   
   const filteredVCs = vcDatabase.filter(vc => {
     const matchesIndustry = selectedIndustry === 'All Industries' || 
@@ -181,49 +219,130 @@ export default function Home() {
     return <DollarSign className="h-4 w-4 text-blue-500" />;
   };
 
+  const handleEmailClick = (email, vcName) => {
+    try {
+      // Try to open mailto link
+      const mailtoLink = `mailto:${email}?subject=Investment Opportunity&body=Hello,\n\nI hope this email finds you well. I came across your profile on the VC Discovery Platform and I'm interested in discussing a potential investment opportunity.\n\nBest regards`;
+      window.location.href = mailtoLink;
+      
+      // Show success toast
+      setToast({
+        message: `Email client opened for ${vcName}`,
+        type: 'success'
+      });
+    } catch (error) {
+      // If mailto fails, show email modal
+      setEmailModal({ email, vcName });
+      setToast({
+        message: 'Email client not found. Showing email details.',
+        type: 'info'
+      });
+    }
+  };
+
+  const copyEmailToClipboard = (email) => {
+    navigator.clipboard.writeText(email).then(() => {
+      setToast({
+        message: 'Email copied to clipboard!',
+        type: 'success'
+      });
+    }).catch(() => {
+      setToast({
+        message: 'Could not copy email',
+        type: 'error'
+      });
+    });
+  };
+
+  const handleQuickFilter = (filterType) => {
+    switch (filterType) {
+      case 'top':
+        setSelectedIndustry('All Industries');
+        setSearchTerm('');
+        setToast({ message: 'Showing all top VCs', type: 'info' });
+        break;
+      case 'active':
+        setSelectedIndustry('All Industries');
+        setSearchTerm('');
+        setToast({ message: 'Showing most active VCs', type: 'info' });
+        break;
+      case 'ai':
+        setSelectedIndustry('Artificial Intelligence');
+        setToast({ message: 'Filtered by AI focus', type: 'info' });
+        break;
+      case 'favorites':
+        setToast({ message: 'Favorites feature coming soon!', type: 'info' });
+        break;
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleGetStarted = () => {
+    // Scroll to VCs section
+    const vcsSection = document.getElementById('vcs');
+    if (vcsSection) {
+      vcsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <Head>
-        <title>VC Discovery Platform - Find the Perfect Venture Capitalists</title>
-        <meta name="description" content="Find Venture Capitalists by industry with validated email addresses" />
+        <title>Invesho - Find Perfect Venture Capital Matches | AI-Powered VC Discovery</title>
+        <meta name="description" content="Connect with the right investors using our AI-powered VC discovery platform. Get verified contact information and industry-specific matches for your startup." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="keywords" content="venture capital, startup funding, VC discovery, investor matching, AI-powered" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      {/* Navigation */}
+      <Navbar />
+      
+      {/* Hero Section */}
+      <HeroSection onGetStarted={handleGetStarted} />
+      
+      {/* Main Content */}
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
         {/* Animated Background Elements */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-4 -right-4 w-96 h-96 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-          <div className="absolute -bottom-8 -left-4 w-96 h-96 bg-gradient-to-br from-indigo-400 to-pink-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+          <div className="absolute top-1/3 left-1/4 w-72 h-72 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-gradient-to-br from-indigo-400 to-pink-600 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse" style={{animationDelay: '2s'}}></div>
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 py-8">
-          {/* Enhanced Header */}
-          <div className="text-center mb-12 animate-fadeIn">
-            <div className="inline-flex items-center justify-center p-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-6 floating">
-              <Briefcase className="h-8 w-8 text-white" />
+        {/* VC Discovery Section */}
+        <section id="vcs" className="relative z-10 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Section Header */}
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Discover Your Perfect
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                  VC Match
+                </span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                Browse our curated database of verified venture capitalists. Filter by industry, search by expertise, and connect directly.
+              </p>
+              
+              {/* Stats */}
+              <div className="flex justify-center gap-8 text-sm text-gray-500 mb-8">
+                <div className="flex items-center hover:text-blue-500 transition-colors cursor-pointer">
+                  <Users className="h-4 w-4 mr-1" />
+                  {vcDatabase.length}+ VCs
+                </div>
+                <div className="flex items-center hover:text-yellow-500 transition-colors cursor-pointer">
+                  <Star className="h-4 w-4 mr-1" />
+                  {industries.length - 1} Industries
+                </div>
+                <div className="flex items-center hover:text-green-500 transition-colors cursor-pointer">
+                  <Mail className="h-4 w-4 mr-1" />
+                  Verified Emails
+                </div>
+              </div>
             </div>
-            <h1 className="text-5xl font-bold gradient-text mb-4">
-              VC Discovery Platform
-            </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Find the perfect Venture Capitalists for your startup. Search by industry and get validated contact information.
-            </p>
-            <div className="mt-6 flex justify-center gap-6 text-sm text-gray-500">
-              <div className="flex items-center hover:text-blue-500 transition-colors cursor-pointer">
-                <Users className="h-4 w-4 mr-1" />
-                {vcDatabase.length} VCs
-              </div>
-              <div className="flex items-center hover:text-yellow-500 transition-colors cursor-pointer">
-                <Star className="h-4 w-4 mr-1" />
-                9 Industries
-              </div>
-              <div className="flex items-center hover:text-green-500 transition-colors cursor-pointer">
-                <Mail className="h-4 w-4 mr-1" />
-                Verified Emails
-              </div>
-            </div>
-          </div>
 
           {/* Enhanced Search Controls */}
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 mb-8 border border-white/20 hover:shadow-2xl transition-all duration-300">
@@ -321,13 +440,13 @@ export default function Home() {
                         </p>
                       </div>
                       <div className="flex gap-2">
-                        <a
-                          href={`mailto:${vc.email}`}
-                          className="p-3 text-blue-600 hover:bg-blue-50 rounded-full transition-all duration-200 hover:scale-110 transform shadow-md hover:shadow-lg"
+                        <button
+                          onClick={() => handleEmailClick(vc.email, vc.name)}
+                          className="p-3 text-blue-600 hover:bg-blue-50 rounded-full transition-all duration-200 hover:scale-110 transform shadow-md hover:shadow-lg morph-button"
                           title="Send Email"
                         >
                           <Mail className="h-5 w-5" />
-                        </a>
+                        </button>
                         <a
                           href={vc.linkedin}
                           target="_blank"
@@ -466,7 +585,76 @@ export default function Home() {
             </p>
           </footer>
         </div>
+
+        {/* Floating Action Button */}
+        <FloatingActionButton
+          onQuickFilter={handleQuickFilter}
+          onScrollToTop={scrollToTop}
+        />
+
+        {/* Toast Notifications */}
+        {toast && (
+          <Toast
+            message={toast.message}
+            type={toast.type}
+            onClose={() => setToast(null)}
+          />
+        )}
+
+        {/* Email Modal */}
+        {emailModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-xl p-6 max-w-md w-full mx-4 animate-scaleIn">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-gray-900">Contact {emailModal.vcName}</h3>
+                <button
+                  onClick={() => setEmailModal(null)}
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+              <div className="space-y-4">
+                <div className="p-4 bg-gray-50 rounded-lg">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-gray-700">Email:</span>
+                    <button
+                      onClick={() => copyEmailToClipboard(emailModal.email)}
+                      className="text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                  <p className="text-gray-900 mt-1">{emailModal.email}</p>
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => {
+                      const mailtoLink = `mailto:${emailModal.email}?subject=Investment Opportunity&body=Hello,\n\nI hope this email finds you well. I came across your profile on the VC Discovery Platform and I'm interested in discussing a potential investment opportunity.\n\nBest regards`;
+                      window.location.href = mailtoLink;
+                      setEmailModal(null);
+                    }}
+                    className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
+                  >
+                    <Mail className="h-4 w-4 mr-2" />
+                    Open Email Client
+                  </button>
+                  <button
+                    onClick={() => setEmailModal(null)}
+                    className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          )}
+        </section>
       </div>
+      
+      {/* Footer */}
+      <Footer />
     </>
   );
 }
