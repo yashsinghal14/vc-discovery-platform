@@ -1,6 +1,8 @@
 import Head from "next/head";
-import { useState, useEffect } from 'react';
-import { Search, Mail, ExternalLink, Building2, DollarSign, MapPin, Filter, Star, Users, Calendar, Globe, Briefcase, TrendingUp, Award } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Search, Mail, ExternalLink, Building2, DollarSign, MapPin, Filter, Star, Users, Calendar, Globe, Briefcase, TrendingUp, Award, Sparkles, Zap, Target, Heart, ArrowRight, Clock, CheckCircle } from 'lucide-react';
+import FloatingActionButton from '../components/FloatingActionButton';
+import Toast from '../components/Toast';
 
 const vcDatabase = [
   {
@@ -128,6 +130,9 @@ export default function Home() {
   const [animateCards, setAnimateCards] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [showFilters, setShowFilters] = useState(false);
+  const [toast, setToast] = useState(null);
+  const [favorites, setFavorites] = useState([]);
+  const mainRef = useRef(null);
   
   const filteredVCs = vcDatabase.filter(vc => {
     const matchesIndustry = selectedIndustry === 'All Industries' || 

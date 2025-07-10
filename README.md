@@ -119,5 +119,5 @@ This platform was created as part of the Software Intern application process for
 
 ---
 
-**Live Demo**: [Your Netlify Link Here]
+**Live Demo**: [https://superb-tartufo-fef157.netlify.app/]
 **GitHub Repository**: [https://github.com/yashsinghal14/vc-discovery-platform]
