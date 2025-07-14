@@ -206,7 +206,7 @@ const getSpecialtyColor = (specialty) => {
             <h2 className="text-2xl font-bold text-white">Venture Capitalists</h2>
             <div className="flex items-center gap-2 w-full md:w-auto">
               <select
-                className="bg-[#232B3B] text-white px-4 py-2 rounded-lg focus:outline-none w-full md:w-auto"
+                className="bg-[#232B3B] text-white px-4 py-2 rounded-lg focus:outline-none w-auto md:w-auto"
                 value={selectedIndustry}
                 onChange={e => setSelectedIndustry(e.target.value)}
               >
@@ -214,17 +214,9 @@ const getSpecialtyColor = (specialty) => {
                   <option key={ind} value={ind}>{ind}</option>
                 ))}
               </select>
-              {/* Add a search bar here for desktop/secondary search */}
-              <input
-                type="text"
-                className="ml-2 flex-1 bg-[#232B3B] text-white placeholder-gray-400 px-4 py-2 rounded-lg focus:outline-none hidden md:block"
-                placeholder="Search for VCs, firms, or specialties..."
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
-              />
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gap-y-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gap-y-10 justify-center">
             {filteredVCs.length === 0 && (
               <div className="col-span-full text-center text-gray-400 py-12 text-lg">No VCs found. Try a different search or filter.</div>
             )}
