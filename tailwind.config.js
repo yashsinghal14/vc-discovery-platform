@@ -7,9 +7,21 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+colors: {
+        background: "#0C0D12",
+        foreground: "#FFFFFF",
+        primary: {
+          50: '#f2faff',
+          100: '#e6f5ff',
+          200: '#bfebff',
+          300: '#99e1ff',
+          400: '#4db3ea',
+          500: '#0086d6',
+          600: '#0079c0',
+          700: '#00537d',
+          800: '#003e5e',
+          900: '#00293f',
+        },
         'blue': {
           50: '#eff6ff',
           100: '#dbeafe',
@@ -35,9 +47,10 @@ module.exports = {
           900: '#581c87',
         },
       },
-      fontFamily: {
+fontFamily: {
         'display': ['Inter', 'system-ui', 'sans-serif'],
         'body': ['Inter', 'system-ui', 'sans-serif'],
+        'headline': ['Inter', 'sans-serif'],
       },
       spacing: {
         '18': '4.5rem',

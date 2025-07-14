@@ -1,0 +1,129 @@
+[
+  {
+    "name": "Marc Andreessen",
+    "title": "Co-founder and General Partner",
+    "company": "Andreessen Horowitz",
+    "email": "marc@a16z.com",
+    "specialties": [
+      "Software",
+      "Internet",
+      "Mobile"
+    ],
+    "source": "Manual",
+    "isValid": true
+  },
+  {
+    "name": "Ben Horowitz",
+    "title": "Co-founder and General Partner",
+    "company": "Andreessen Horowitz",
+    "email": "ben@a16z.com",
+    "specialties": [
+      "Enterprise Software",
+      "Cloud Computing"
+    ],
+    "source": "Manual",
+    "isValid": true
+  },
+  {
+    "name": "Reid Hoffman",
+    "title": "Partner",
+    "company": "Greylock Partners",
+    "email": "reid@greylock.com",
+    "specialties": [
+      "Consumer Internet",
+      "Social Networks"
+    ],
+    "source": "Manual",
+    "isValid": true
+  },
+  {
+    "name": "Mary Meeker",
+    "title": "General Partner",
+    "company": "Bond Capital",
+    "email": "mary@bondcap.com",
+    "specialties": [
+      "Internet",
+      "Mobile",
+      "Consumer"
+    ],
+    "source": "Manual",
+    "isValid": true
+  },
+  {
+    "name": "Fred Wilson",
+    "title": "Managing Partner",
+    "company": "Union Square Ventures",
+    "email": "fred@usv.com",
+    "specialties": [
+      "Internet",
+      "Mobile",
+      "Fintech"
+    ],
+    "source": "Manual",
+    "isValid": true
+  },
+  {
+    "name": "Naval Ravikant",
+    "title": "Co-founder and Chairman",
+    "company": "AngelList",
+    "email": "naval@angel.co",
+    "specialties": [
+      "Consumer Internet",
+      "Marketplaces"
+    ],
+    "source": "Manual",
+    "isValid": true
+  },
+  {
+    "name": "Sam Altman",
+    "title": "CEO",
+    "company": "OpenAI",
+    "email": "sam@openai.com",
+    "specialties": [
+      "AI",
+      "Machine Learning",
+      "Software"
+    ],
+    "source": "Manual",
+    "isValid": true
+  },
+  {
+    "name": "Elon Musk",
+    "title": "CEO",
+    "company": "Tesla",
+    "email": "elon@tesla.com",
+    "specialties": [
+      "Automotive",
+      "Space",
+      "Clean Energy"
+    ],
+    "source": "Manual",
+    "isValid": true
+  },
+  {
+    "name": "Brian Chesky",
+    "title": "Co-founder and CEO",
+    "company": "Airbnb",
+    "email": "brian@airbnb.com",
+    "specialties": [
+      "Travel",
+      "Marketplaces",
+      "Consumer"
+    ],
+    "source": "Manual",
+    "isValid": true
+  },
+  {
+    "name": "Drew Houston",
+    "title": "Co-founder and CEO",
+    "company": "Dropbox",
+    "email": "drew@dropbox.com",
+    "specialties": [
+      "Cloud Storage",
+      "SaaS",
+      "Productivity"
+    ],
+    "source": "Manual",
+    "isValid": true
+  }
+]

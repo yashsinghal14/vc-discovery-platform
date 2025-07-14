@@ -1,0 +1,11 @@
+Name,Title,Company,Email,Specialties,Source,IsValid
+"Marc Andreessen","Co-founder and General Partner","Andreessen Horowitz","marc@a16z.com","Software; Internet; Mobile","Manual","true"
+"Ben Horowitz","Co-founder and General Partner","Andreessen Horowitz","ben@a16z.com","Enterprise Software; Cloud Computing","Manual","true"
+"Reid Hoffman","Partner","Greylock Partners","reid@greylock.com","Consumer Internet; Social Networks","Manual","true"
+"Mary Meeker","General Partner","Bond Capital","mary@bondcap.com","Internet; Mobile; Consumer","Manual","true"
+"Fred Wilson","Managing Partner","Union Square Ventures","fred@usv.com","Internet; Mobile; Fintech","Manual","true"
+"Naval Ravikant","Co-founder and Chairman","AngelList","naval@angel.co","Consumer Internet; Marketplaces","Manual","true"
+"Sam Altman","CEO","OpenAI","sam@openai.com","AI; Machine Learning; Software","Manual","true"
+"Elon Musk","CEO","Tesla","elon@tesla.com","Automotive; Space; Clean Energy","Manual","true"
+"Brian Chesky","Co-founder and CEO","Airbnb","brian@airbnb.com","Travel; Marketplaces; Consumer","Manual","true"
+"Drew Houston","Co-founder and CEO","Dropbox","drew@dropbox.com","Cloud Storage; SaaS; Productivity","Manual","true"
